@@ -1,16 +1,16 @@
 export type TWeatherCondition = {
-	type: string
+	id: number
+	main: string
 	icon: string
 	description: string
 }
 
 export interface IWeatherCondition {
-	code: number
-	type: string
+	id: number
+	main: string
 	icon: string
 	description: string
-
-	// getWeatherCondition(): TWeatherCondition
+	getWeatherCondition(): TWeatherCondition
 }
 
 export enum EWeatherCondition {

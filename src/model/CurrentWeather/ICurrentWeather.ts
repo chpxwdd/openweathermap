@@ -1,16 +1,11 @@
+import { TWeatherCondition } from './WeatherCondition/CurrentWeatherInterface'
+
 export interface ICurrentWeather {
 	coord: {
 		lon: number
 		lat: number
 	}
-	weather: [
-		{
-			id: number
-			main: string // "Clouds",
-			description: string //"overcast clouds",
-			icon: string // "04d"
-		}
-	]
+	weather: TWeatherCondition
 	base: string //"stations",
 	main: {
 		temp: number //271.24,

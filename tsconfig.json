@@ -15,7 +15,9 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "react-jsx",
-		"outDir": "out"
+		"outDir": "./out",
+		"noEmitHelpers": true,
+		"noEmitOnError": true
 	},
 	"include": ["src"]
 }

@@ -2,106 +2,110 @@ import { EWeatherCondition, IWeatherCondition, TWeatherCondition } from './Curre
 import { WeatherCondition } from './WeatherCondition'
 
 export default class ThunderstormFactory implements IWeatherCondition {
-	type = EWeatherCondition.THUNDERSTORM
-	icon = '11'
+	id = NaN
+	main = EWeatherCondition.THUNDERSTORM
 	description = ''
-	code = NaN
+	icon = '11'
 
-	static build(code: number): IWeatherCondition {
-		switch (code) {
-			case 200:
-				return new LightRainThunderstom(code)
-			case 201:
-				return new RainThunderstom(code)
-			case 202:
-				return new HeavyRainThunderstom(code)
-			case 210:
-				return new LightThunderstom(code)
-			case 211:
-				return new Thunderstom(code)
-			case 212:
-				return new HeavyThunderstom(code)
-			case 221:
-				return new RaggedThunderstom(code)
-			case 230:
-				return new LightDrizzleThunderstom(code)
-			case 231:
-				return new DrizzleThunderstom(code)
-			case 232:
-				return new HeavyDrizzleThunderstom(code)
+	public getWeatherCondition(): TWeatherCondition {
+		return { id: this.id, main: this.main, description: this.description, icon: this.icon }
+	}
+
+	static build(id: number): IWeatherCondition {
+		switch (id) {
 			default:
-				throw new Error('Thunderstorm weather condition not found!')
+			// throw new Error('Thunderstorm weather condition not found!')
+			case 200:
+				return new LightRainThunderstom(id)
+			case 201:
+				return new RainThunderstom(id)
+			case 202:
+				return new HeavyRainThunderstom(id)
+			case 210:
+				return new LightThunderstom(id)
+			case 211:
+				return new Thunderstom(id)
+			case 212:
+				return new HeavyThunderstom(id)
+			case 221:
+				return new RaggedThunderstom(id)
+			case 230:
+				return new LightDrizzleThunderstom(id)
+			case 231:
+				return new DrizzleThunderstom(id)
+			case 232:
+				return new HeavyDrizzleThunderstom(id)
 		}
 	}
 }
 
 class LightRainThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm with light cls'
 	}
 }
 class RainThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm with light rain'
 	}
 }
 class HeavyRainThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm with light rain'
 	}
 }
 class LightThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'light thunderstorm'
 	}
 }
 class Thunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm'
 	}
 }
 class HeavyThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'heavy thunderstorm'
 	}
 }
 class RaggedThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'ragged thunderstorm'
 	}
 }
 class LightDrizzleThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm with light drizzle'
 	}
 }
 class DrizzleThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm with drizzle'
 	}
 }
 class HeavyDrizzleThunderstom extends ThunderstormFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'thunderstorm with heavy drizzle'
 	}
 }

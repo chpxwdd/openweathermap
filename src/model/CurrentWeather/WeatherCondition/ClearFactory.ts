@@ -1,25 +1,29 @@
-import { EWeatherCondition, IWeatherCondition } from './CurrentWeatherInterface'
+import { EWeatherCondition, IWeatherCondition, TWeatherCondition } from './CurrentWeatherInterface'
 
 export default class ClearFactory implements IWeatherCondition {
-	code = NaN
-	type = EWeatherCondition.CLEAR
+	id = NaN
+	main = EWeatherCondition.CLEAR
 	description = ''
 	icon = '01'
 
-	static build(code: number): IWeatherCondition {
-		switch (code) {
-			case 800:
-				return new Clear(code)
+	getWeatherCondition(): TWeatherCondition {
+		return { id: this.id, main: this.main, description: this.description, icon: this.icon }
+	}
+
+	static build(id: number): IWeatherCondition {
+		switch (id) {
 			default:
-				throw new Error('Clear weather condition not found')
+			// throw new Error('Clear weather condition not found')
+			case 800:
+				return new Clear(id)
 		}
 	}
 }
 
 class Clear extends ClearFactory {
-	constructor(code: number) {
+	constructor(id: number) {
 		super()
-		this.code = code
+		this.id = id
 		this.description = 'clear sky'
 	}
 }

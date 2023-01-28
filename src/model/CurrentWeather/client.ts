@@ -1,5 +1,5 @@
 import { WeatherCondition } from './WeatherCondition/WeatherCondition'
-import { EWeatherCondition, IWeatherCondition } from './WeatherCondition/CurrentWeatherInterface'
+import { EWeatherCondition, TWeatherCondition } from './WeatherCondition/CurrentWeatherInterface'
 
 type dataElement = {
 	main: EWeatherCondition
@@ -17,9 +17,7 @@ let data: dataElement[] = [
 
 data.forEach((elem: dataElement) => {
 	elem.codes.forEach((code: number) => {
-		let ws: IWeatherCondition | Error
-		ws = WeatherCondition.create(elem.main, code)
-		console.log(ws)
-		// console.log(`main: ${ws.main}, code: ${ws.code}, description:${ws.description}, icon:${ws.icon}`)
+		let ws: TWeatherCondition = WeatherCondition.create(elem.main, code).getWeatherCondition()
+		console.log(`{ main: '${ws.main}', code: ${ws.id}, description: '${ws.description}', icon: '${ws.icon}' } `)
 	})
 })
