@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
+import { Container, Row, Col, ThemeProvider } from "react-bootstrap"
+import Title from "./components/Title"
+import CurrentWeatherForm from "./components/CurrentWeatherForm"
+import "bootstrap/dist/css/bootstrap.min.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	return (
+		<ThemeProvider
+			breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
+			minBreakpoint="xxs"
+		>
+			<Container>
+				<Title title="Current weather" lead="search weather in cities" />
+				<Row>
+					<Col>
+						<CurrentWeatherForm />
+					</Col>
+				</Row>
+			</Container>
+		</ThemeProvider>
+	)
 }
 
-export default App;
+export default App
