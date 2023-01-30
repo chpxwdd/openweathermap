@@ -20,7 +20,7 @@ export class WeatherCondition implements IWeatherCondition {
 	static create(main: EWeatherCondition = EWeatherCondition.CLEAR, id: number = 800): IWeatherCondition {
 		switch (main) {
 			default:
-			// throw new Error('Weather condition not found')
+				throw new Error('Weather condition not found')
 			case EWeatherCondition.CLEAR:
 				return ClearFactory.build(id)
 			case EWeatherCondition.THUNDERSTORM:

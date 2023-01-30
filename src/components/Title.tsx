@@ -1,15 +1,12 @@
-import React, { FC } from 'react'
+import * as React from 'react'
+import { PageContext, IPageContext, pageInitialContext } from './context/PageContext'
 
-interface TitleProps {
-	title: string
-	lead?: string
-}
-
-const Title: FC<TitleProps> = ({ title, lead }) => {
+const Title: React.FunctionComponent = () => {
+	const { page } = React.useContext<IPageContext>(PageContext)
 	return (
 		<div className="mt-5">
-			<h1>{title}</h1>
-			<p className="lead">{lead}</p>
+			<h1>{page.title}</h1>
+			<p className="lead">{page.lead}</p>
 		</div>
 	)
 }

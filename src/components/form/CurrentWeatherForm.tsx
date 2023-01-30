@@ -1,26 +1,20 @@
+import { ChangeEventHandler, Dispatch, FC, MouseEventHandler, SetStateAction, useState } from 'react'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as React from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
-import OWM_API from '../config/owm.api.js'
-import axios from 'axios'
 
 interface ICityFormProps {
-	name?: string
+	setCity(city: string): void
 }
 
-const CurrentWeatherForm: React.FC<ICityFormProps> = () => {
-	const [cityName, setCityName] = React.useState<string>('')
-	const [searching, setSearching] = React.useState<boolean>(false)
-
-	const handleSearch: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
+const CurrentWeatherForm: FC<ICityFormProps> = ({ setCity }) => {
+	const [cityName, setCityName] = useState<string>('')
+	const handleSearch: MouseEventHandler<HTMLButtonElement> = (e) => {
 		e.preventDefault()
-		const responce = await axios.get(
-			`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${OWM_API.default.apikey}`
-		)
-		console.log(responce.data)
+		setCity(cityName)
 	}
-	const handleCityName: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+
+	const handleCityName: ChangeEventHandler<HTMLInputElement> = (e) => {
 		setCityName(e.target.value)
 	}
 
